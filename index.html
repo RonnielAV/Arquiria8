@@ -1,0 +1,994 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Arquiria 8 · Enlaces de Interés y Solicitud del Salón</title>
+
+  <style>
+    :root{
+      --blue:#5070a0;
+      --blue2:#3f5f8f;
+      --pine:#304020;
+
+      --bg:#f4f6f9;
+      --panel: rgba(255,255,255,.88);
+      --panel2: rgba(255,255,255,.96);
+      --stroke: rgba(20,30,40,.12);
+
+      --text: rgba(25,30,35,.92);
+      --muted: rgba(25,30,35,.68);
+
+      --radius: 18px;
+      --shadow: 0 18px 45px rgba(15, 25, 35, .14);
+      --shadow-soft: 0 10px 25px rgba(15, 25, 35, .10);
+      --max: 1120px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.45;
+
+      background:
+        radial-gradient(900px 520px at 8% -10%, rgba(80,112,160,.22), transparent 60%),
+        radial-gradient(900px 560px at 92% 0%, rgba(48,64,32,.10), transparent 62%),
+        radial-gradient(900px 560px at 50% 125%, rgba(201,205,212,.55), transparent 62%),
+        var(--bg);
+    }
+    a{ color: inherit; text-decoration: none; }
+
+    a:focus-visible, .btn:focus-visible{
+      outline: 3px solid rgba(80,112,160,.35);
+      outline-offset: 3px;
+    }
+    html{ scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce){
+      *{ scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+    }
+
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 26px 18px 60px;
+    }
+
+    /* Header */
+    .top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:16px;
+      padding: 12px 8px 0;
+    }
+    .brandmark{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .logo-img{
+      width:80px; height:80px;
+      border-radius: 16px;
+      border: 1px solid rgba(20,30,40,.14);
+      background: rgba(255,255,255,.75);
+      box-shadow: 0 14px 30px rgba(80,112,160,.16);
+      object-fit: contain;
+      padding: 6px;
+    }
+    .title h1{
+      margin:0;
+      font-size: 18px;
+      letter-spacing: .2px;
+    }
+    .title p{
+      margin:4px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      max-width: 70ch;
+      text-align: justify;
+    }
+    .chip{
+      padding: 8px 10px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--stroke);
+      border-radius: 999px;
+      color: rgba(25,30,35,.78);
+      font-size: 12px;
+      white-space: nowrap;
+      height: fit-content;
+    }
+
+    /* Accesos rápidos */
+    .quicknav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      padding: 12px 8px 0;
+      margin-top: 6px;
+    }
+    .qbtn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(20,30,40,.14);
+      background: rgba(255,255,255,.70);
+      color: rgba(25,30,35,.90);
+      font-size: 13px;
+      font-weight: 700;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease, box-shadow .12s ease;
+    }
+    .qbtn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.92);
+      border-color: rgba(80,112,160,.35);
+      box-shadow: 0 12px 22px rgba(15, 25, 35, .10);
+    }
+    .qbtn.primary{
+      background: linear-gradient(135deg, rgba(80,112,160,.95), rgba(63,95,143,.88));
+      color: #fff;
+      border-color: rgba(80,112,160,.35);
+      box-shadow: 0 14px 30px rgba(80,112,160,.16);
+    }
+
+/* Sections */
+    .section{
+      margin-top: 22px;
+      padding: 18px;
+      background: var(--panel);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(10px);
+    }
+    .section h2{
+      margin: 0 0 8px;
+      font-size: 16px;
+      letter-spacing: .2px;
+    }
+    .section .sub{
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: justify;
+    }
+
+    /* Grid base */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+
+    /* Info blocks */
+    .info-card{
+      grid-column: span 12;
+      background: var(--panel2);
+      border: 1px solid rgba(20,30,40,.12);
+      border-radius: 18px;
+      box-shadow: var(--shadow-soft);
+      padding: 16px;
+    }
+    .info-header{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(20,30,40,.12);
+      background: rgba(80,112,160,.10);
+      color: rgba(25,30,35,.85);
+      font-size: 12px;
+      font-weight: 700;
+      width: fit-content;
+    }
+    .cols{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+      margin-top: 12px;
+    }
+    .col{
+      grid-column: span 3;
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(20,30,40,.12);
+      border-radius: 16px;
+      padding: 12px;
+    }
+    .col h3{
+      margin:0 0 8px;
+      font-size: 13px;
+      color: var(--blue2);
+      text-transform: uppercase;
+      letter-spacing: .4px;
+    }
+    .list{
+      margin:0;
+      padding-left: 16px;
+      color: rgba(25,30,35,.88);
+      font-size: 13px;
+    }
+    .list li{ margin: 6px 0; }
+
+    /* Gimnasio */
+    .gym-card{
+      grid-column: span 12;
+      border-radius: 18px;
+      border: 1px solid rgba(20,30,40,.12);
+      background:
+        radial-gradient(700px 280px at 10% 30%, rgba(80,112,160,.18), transparent 60%),
+        radial-gradient(700px 280px at 90% 30%, rgba(48,64,32,.10), transparent 60%),
+        rgba(255,255,255,.92);
+      box-shadow: var(--shadow);
+      padding: 16px;
+      display:grid;
+      grid-template-columns: 1.35fr 0.95fr;
+      gap: 14px;
+      align-items: stretch;
+      overflow: hidden;
+    }
+    .gym-left{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      min-width: 260px;
+    }
+    .gym-right{
+      border-radius: 16px;
+      border: 1px solid rgba(20,30,40,.12);
+      background: rgba(255,255,255,.85);
+      overflow: hidden;
+      box-shadow: 0 14px 30px rgba(15, 25, 35, .10);
+    }
+    .gym-right img{
+      width: 100%;
+      height: 100%;
+      display:block;
+      object-fit: cover;
+    }
+    .gym-card h3{
+      margin:0;
+      font-size: 15px;
+      color: var(--blue2);
+      letter-spacing: .2px;
+    }
+    .gym-card p{
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      max-width: 72ch;
+      text-align: justify;
+    }
+    .gym-card .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 10px;
+    }
+    .pill{
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(20,30,40,.12);
+      background: rgba(255,255,255,.85);
+      font-size: 12px;
+      color: rgba(25,30,35,.86);
+      font-weight: 700;
+    }
+
+
+    /* Cards (recursos) */
+    .card{
+      grid-column: span 6;
+      padding: 16px;
+      border-radius: 18px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.78));
+      border: 1px solid rgba(20,30,40,.12);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      min-height: 140px;
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-70px -70px auto auto;
+      width:210px; height:210px;
+      background: radial-gradient(circle at 30% 30%, rgba(80,112,160,.16), transparent 62%);
+      filter: blur(2px);
+    }
+    .card::after{
+      content:"";
+      position:absolute;
+      inset:auto -90px -90px auto;
+      width:240px; height:240px;
+      background: radial-gradient(circle at 30% 30%, rgba(48,64,32,.08), transparent 65%);
+      filter: blur(2px);
+    }
+
+    .row{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      position: relative;
+      z-index: 1;
+    }
+    .meta2{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+    }
+    .icon2{
+      width:44px; height:44px;
+      border-radius: 16px;
+      background: rgba(80,112,160,.10);
+      border: 1px solid rgba(20,30,40,.12);
+      display:grid;
+      place-items:center;
+      font-size: 18px;
+    }
+
+    .kicker{
+      margin:0;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--blue2);
+      letter-spacing: .2px;
+    }
+    .card h3{
+      margin: 6px 0 0;
+      font-size: 16px;
+      letter-spacing: .1px;
+    }
+    .desc{
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      max-width: 52ch;
+      text-align: justify;
+    }
+
+    .actions{
+      margin-top: 12px;
+      display:flex;
+      flex-wrap: wrap;
+      gap:10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(20,30,40,.14);
+      background: rgba(255,255,255,.70);
+      color: rgba(25,30,35,.92);
+      font-size: 13px;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease, box-shadow .12s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.92);
+      border-color: rgba(80,112,160,.35);
+      box-shadow: 0 12px 22px rgba(15, 25, 35, .12);
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(80,112,160,.95), rgba(63,95,143,.88));
+      color: white;
+      border-color: rgba(80,112,160,.35);
+      box-shadow: 0 14px 30px rgba(80,112,160,.18);
+    }
+
+    .tag{
+      font-size: 11px;
+      color: rgba(25,30,35,.72);
+      background: rgba(255,255,255,.65);
+      border: 1px solid rgba(20,30,40,.12);
+      padding: 6px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    /* IA banner */
+    .ai{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(20,30,40,.12);
+      background:
+        radial-gradient(650px 260px at 18% 20%, rgba(80,112,160,.18), transparent 60%),
+        radial-gradient(650px 300px at 88% 20%, rgba(48,64,32,.10), transparent 60%),
+        rgba(255,255,255,.85);
+      box-shadow: var(--shadow);
+    }
+    .ai .left{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+    }
+    .ai .badge2{
+      width:48px; height:48px;
+      border-radius: 16px;
+      display:grid;
+      place-items:center;
+      border: 1px solid rgba(20,30,40,.12);
+      background: rgba(255,255,255,.80);
+      font-size: 20px;
+    }
+    .ai h3{ margin: 0; font-size: 15px; }
+    .ai p{
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      max-width: 70ch;
+      text-align: justify;
+    }
+
+    /* ================= FORMULARIO (con envío) ================= */
+    .loading-overlay {
+      display: none;
+      position: fixed; top:0; left:0; width:100%; height:100%;
+      background: rgba(255,255,255,0.8);
+      z-index: 99;
+      align-items: center; justify-content: center;
+      flex-direction: column;
+    }
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid var(--blue);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+    .form-shell{
+      background: var(--panel2);
+      border: 1px solid var(--stroke);
+      border-radius: 18px;
+      box-shadow: var(--shadow-soft);
+      padding: 18px;
+    }
+    .form-card{
+      max-width: 860px;
+      margin: 0 auto;
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(20,30,40,.12);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+    .form-header{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      border-bottom: 3px solid var(--blue);
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+    }
+    .form-logo{
+      width: 120px;
+      height: auto;
+      border-radius: 8px;
+      background: #eee;
+      border: 1px solid rgba(20,30,40,.12);
+      padding: 6px;
+      object-fit: contain;
+    }
+    .form-header h1{
+      margin:0;
+      font-size: 18px;
+      text-transform: uppercase;
+      color: var(--blue2);
+      letter-spacing: .4px;
+    }
+    .form-header p{
+      margin:4px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: justify;
+    }
+    .form-card h3{
+      color: var(--blue2);
+      text-transform: uppercase;
+      border-left: 4px solid var(--blue2);
+      padding-left: 10px;
+      margin-top: 22px;
+      font-size: 15px;
+    }
+    .form-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .full-width{ grid-column: span 2; }
+    .form-card label{
+      display:block;
+      font-weight: 700;
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+    .form-card input, .form-card textarea{
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+      background: #fafafa;
+    }
+    .form-card input:focus, .form-card textarea:focus{
+      border-color: var(--blue);
+      background: #fff;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(80,112,160,.16);
+    }
+    .radio-row{
+      display:flex;
+      gap:15px;
+      padding: 5px 0;
+      flex-wrap: wrap;
+    }
+    .radio{ display:flex; align-items:center; gap:6px; cursor:pointer; }
+    .radio input{ width:auto; margin:0; }
+    .commitment{
+      background: rgba(80,112,160,.06);
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 0.9em;
+      border: 1px solid rgba(80,112,160,.15);
+      text-align: justify;
+    }
+    .commitment ul { margin-top:5px; margin-bottom:5px; padding-left: 20px;}
+    .form-btn{
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 16px;
+      margin-top: 20px;
+      background: linear-gradient(135deg, var(--blue), var(--blue2));
+      color: #fff;
+      transition: .3s;
+    }
+    .form-btn:hover{ opacity: 0.9; transform: translateY(-1px); }
+    .form-btn:disabled{ background: #ccc; cursor: not-allowed; }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .card{ grid-column: span 12; }
+      .col{ grid-column: span 6; }
+      .top{ padding-left: 0; padding-right: 0; }
+    }
+    @media (max-width: 600px){
+      .cols{ grid-template-columns: 1fr; }
+      .col{ grid-column: span 12; }
+      .form-grid{ grid-template-columns: 1fr; }
+      .full-width{ grid-column: span 1; }
+      .form-header{ flex-direction: column; text-align: center; }
+      .ai{ flex-direction: column; align-items:flex-start; }
+      .chip{ display:none; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Loader del formulario -->
+  <div class="loading-overlay" id="loader">
+    <div class="spinner"></div>
+    <p>Enviando solicitud...</p>
+  </div>
+
+  <div class="wrap">
+
+    <header class="top">
+      <div class="brandmark">
+        <img class="logo-img" src="logo.png" alt="Logo Arquiria 8" onerror="this.style.display='none'" />
+        <div class="title">
+          <h1>Arquiria 8 · Enlaces de Interés y Ayuda</h1>
+          <p>Recursos oficiales, información del residencial y solicitudes del salón de eventos.</p>
+        </div>
+      </div>
+      <div class="chip">📌 La convivencia depende de la buena voluntad de todos ✨</div>
+    </header>
+
+    <nav class="quicknav" aria-label="Accesos rápidos">
+      <a class="qbtn" href="#colaboradores">👥 Colaboradores</a>
+      <a class="qbtn" href="#gimnasio">🏋️ Gimnasio</a>
+      <a class="qbtn" href="#recursos">📂 Recursos</a>
+      <a class="qbtn" href="#ia">🤖 IA</a>
+      <a class="qbtn primary" href="#formulario">📝 Solicitud salón</a>
+    </nav>
+
+    <!-- ✅ NUEVO: Colaboradores (arriba) -->
+    <section class="section" id="colaboradores" aria-labelledby="colab-title">
+      <h2 id="colab-title">👥 Grupo de Colaboradores · Arquiria 8</h2>
+      <p class="sub">
+        El Grupo de Colaboradores de Arquiria 8 está conformado por propietarios e inquilinos que, de manera voluntaria y no remunerada,
+        asumen de forma temporal la gestión ordinaria del residencial, con el propósito de encargarse del seguimiento de temas operativos
+        del día a día y canalizar necesidades comunes.<br/>
+        <strong>No asume funciones extraordinarias ni decisiones que impliquen compromisos legales o financieros de largo plazo.</strong>
+      </p>
+
+      <div class="grid">
+        <div class="info-card">
+          <div class="info-header">
+            <div class="badge">📌 Organización por bloque</div>
+            <div class="badge" style="background: rgba(48,64,32,.10);">🤝 Voluntario · No remunerado</div>
+          </div>
+
+          <div class="cols">
+            <div class="col">
+              <h3>Bloque AB</h3>
+              <ul class="list">
+                <li>Joanna Olsen · 5B</li>
+                <li>Evans Del Rosario · 5B</li>
+                <li>Rafael Rodríguez · 2A</li>
+              </ul>
+            </div>
+
+            <div class="col">
+              <h3>Bloque CD</h3>
+              <ul class="list">
+                <li>Cynthia Grullón · 3D</li>
+                <li>Alessio Adanti · 3D</li>
+                <li>Elizabeth Fermín · 5C</li>
+              </ul>
+            </div>
+
+            <div class="col">
+              <h3>Bloque EF</h3>
+              <ul class="list">
+                <li>Diana Hidalgo · 2E</li>
+                <li>Ronniel Aybar · 1F</li>
+              </ul>
+            </div>
+
+            <div class="col">
+              <h3>Colaboradores Externos</h3>
+              <ul class="list">
+                <li>Ángel Roedán · A8</li>
+                <li>Mariely Victoriano · A8</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+            <!-- ✅ NUEVO: Gimnasio comunitario -->
+    <div class="gym-card" id="gimnasio" aria-label="Información del gimnasio comunitario">
+      <div class="gym-left">
+        <div class="icon" aria-hidden="true">🏋️‍♂️</div>
+        <div>
+          <div class="badge" style="margin-bottom:8px;">GIMNASIO COMUNITARIO</div>
+          <h3>Información de uso</h3>
+          <p>
+            Espacio para todos los residentes. Por favor, mantengamos la convivencia y la seguridad.
+            <br><strong>🔑 Llaves disponibles a partir del 1ero de febrero.</strong>
+          </p>
+
+          <div class="meta">
+            <span class="pill">🕕 Horario: 6:00 a.m. – 11:00 p.m.</span>
+            <span class="pill">📍 Ubicación: <em>Último piso – Bloque EF</em></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section
+
+    <!-- Recursos -->
+    <section class="section" aria-labelledby="recursos">
+      <h2 id="recursos">📂 Panel de Recursos Rápidos</h2>
+      <p class="sub">Accede y descarga los documentos más importantes en un clic.</p>
+
+      <div class="grid">
+        <article class="card">
+          <div class="row">
+            <div class="meta2">
+              <div class="icon2">📘</div>
+              <div>
+                <p class="kicker">Guía General de Convivencia</p>
+                <h3>Manual Completo (PDF)</h3>
+                <p class="desc">Normas completas, responsabilidades y recomendaciones para todos los residentes.</p>
+              </div>
+            </div>
+            <span class="tag">PDF</span>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="https://drive.google.com/file/d/1fKdVmUP-puK_uWoVX23cZLBD0UWMi3Cn/view?usp=drive_link" target="_blank" rel="noopener">
+              Ver / Descargar ↗
+            </a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="row">
+            <div class="meta2">
+              <div class="icon2">🖼️</div>
+              <div>
+                <p class="kicker">Guía General de Convivencia</p>
+                <h3>Resumen Gráfico (Imagen)</h3>
+                <p class="desc">Versión visual y rápida para recordar lo esencial de la convivencia.</p>
+              </div>
+            </div>
+            <span class="tag">Imagen</span>
+          </div>
+          <div class="actions">
+            <a class="btn" href="https://drive.google.com/file/d/12rz-Qm2MCcLxNXD4aOihA1hu_ugDqmW1/view?usp=drive_link" target="_blank" rel="noopener">
+              Abrir ↗
+            </a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="row">
+            <div class="meta2">
+              <div class="icon2">🎉</div>
+              <div>
+                <p class="kicker">Uso del Salón de Eventos</p>
+                <h3>Pautas de Uso (PDF)</h3>
+                <p class="desc">Reglas de reserva, responsabilidades, horarios y cuidado del salón.</p>
+              </div>
+            </div>
+            <span class="tag">PDF</span>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="https://drive.google.com/file/d/1LQUIy23aXDVdWcm_smrubZYBGSf2xOVI/view?usp=drive_link" target="_blank" rel="noopener">
+              Ver / Descargar ↗
+            </a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="row">
+            <div class="meta2">
+              <div class="icon2">🖼️</div>
+              <div>
+                <p class="kicker">Uso del Salón de Eventos</p>
+                <h3>Resumen Gráfico (Imagen)</h3>
+                <p class="desc">Guía visual rápida con los puntos clave para el uso correcto.</p>
+              </div>
+            </div>
+            <span class="tag">Imagen</span>
+          </div>
+          <div class="actions">
+            <a class="btn" href="https://drive.google.com/file/d/148eVJK0PoyxT-uOeWxRbLfpG4gZQjhIU/view?usp=drive_link" target="_blank" rel="noopener">
+              Abrir ↗
+            </a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="row">
+            <div class="meta2">
+              <div class="icon2">🛟</div>
+              <div>
+                <p class="kicker">Ayuda</p>
+                <h3>¿Tienes dudas?</h3>
+                <p class="desc">Usa la IA para consultas rápidas o revisa los documentos oficiales.</p>
+              </div>
+            </div>
+            <span class="tag">Soporte</span>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#ia">Ver IA 🤖</a>
+            <a class="btn" href="#formulario">Ir al formulario 📝</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- IA -->
+    <section class="section" id="ia" aria-labelledby="asistente">
+      <h2 id="asistente">🤖 Tu Asistente Virtual (IA)</h2>
+      <p class="sub">Resuelve dudas sobre normas y convivencia en segundos.</p>
+
+      <div class="ai">
+        <div class="left">
+          <div class="badge2" aria-hidden="true">🤖</div>
+          <div>
+            <h3>¿Dudas sobre las normas? Pregúntale a nuestra IA</h3>
+            <p>Ideal para consultas rápidas: ruido, mascotas, parqueos, uso de áreas comunes y reglas del salón.</p>
+          </div>
+        </div>
+
+        <a class="btn primary" href="https://gemini.google.com/gem/1AubPpNu6Y7tBcAlXsIyyHUQ3YJSXWEZS?usp=sharing" target="_blank" rel="noopener">
+          Abrir chat con IA ↗
+        </a>
+      </div>
+    </section>
+
+    <!-- FORMULARIO -->
+    <section class="section" id="formulario" aria-labelledby="solicitud">
+      <h2 id="solicitud">📝 Solicitud del Salón de Eventos</h2>
+      <p class="sub">Completa el formulario digital. Se enviará directamente a la hoja de control.</p>
+
+      <div class="form-shell">
+        <div class="form-card">
+          <div class="form-header">
+            <img src="logo.png" alt="Logo" class="form-logo" onerror="this.style.display='none'">
+            <div>
+              <h1>Solicitud Salón de Eventos</h1>
+              <p>Residencial Arquiria 8 · Formulario digital</p>
+            </div>
+          </div>
+
+          <form id="solicitudForm">
+            <h3>1. Datos del Solicitante</h3>
+            <div class="form-grid">
+              <div class="full-width">
+                <label>Nombre completo:</label>
+                <input type="text" name="nombre" required placeholder="Ej. Juan Pérez" />
+              </div>
+              <div>
+                <label>Apartamento:</label>
+                <input type="text" name="apto" required placeholder="Ej. 2B" />
+              </div>
+              <div>
+                <label>Teléfono / WhatsApp:</label>
+                <input type="tel" name="tel" required placeholder="8090000000" />
+              </div>
+              <div class="full-width">
+                <label>Email (opcional):</label>
+                <input type="email" name="email" placeholder="Para recibir confirmación" />
+              </div>
+            </div>
+
+            <h3>2. Detalles del Evento</h3>
+            <div class="form-grid">
+              <div class="full-width">
+                <label>Tipo de actividad:</label>
+                <input type="text" name="actividad" required placeholder="Ej. Cumpleaños infantil" />
+              </div>
+              <div>
+                <label>Fecha:</label>
+                <input type="date" name="fecha_evento" required />
+              </div>
+              <div>
+                <label>Invitados aprox:</label>
+                <input type="number" name="invitados" min="1" required />
+              </div>
+              <div class="full-width">
+                <label>Horario (Inicio - Fin):</label>
+                <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                  <input type="time" name="hora_inicio" required>
+                  <input type="time" name="hora_fin" required>
+                </div>
+              </div>
+
+              <div class="full-width">
+                <label>¿Uso de música / equipos de sonido?</label>
+                <div class="radio-row">
+                  <label class="radio"><input type="radio" name="musica" value="Sí" required> Sí</label>
+                  <label class="radio"><input type="radio" name="musica" value="No"> No</label>
+                </div>
+              </div>
+
+              <div class="full-width">
+                <label>¿Requiere mobiliario adicional?</label>
+                <div class="radio-row">
+                  <label class="radio"><input type="radio" name="mobiliario" value="Sí" required> Sí</label>
+                  <label class="radio"><input type="radio" name="mobiliario" value="No"> No</label>
+                </div>
+              </div>
+            </div>
+
+            <h3>3. Compromiso</h3>
+            <div class="commitment">
+              <p style="margin-top:0">Al enviar esta solicitud, acepto las pautas comunitarias:</p>
+              <ul>
+                <li>Cuidar las instalaciones y mantener el orden y la limpieza.</li>
+                <li>Respetar los horarios y la tranquilidad de los vecinos.</li>
+                <li>Asumir reparaciones o limpieza adicional si fuera necesaria.</li>
+              </ul>
+              <label style="margin-top:10px;">Firma Digital (Escribe tu nombre):</label>
+              <div id="firma-container" style="display: flex; align-items: center; gap: 0; width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; background: #fafafa; font-size: 14px; transition: border-color .12s ease, background .12s ease, box-shadow .12s ease;">
+                <span style="white-space: nowrap;">Yo, </span>
+                <input type="text" id="firma" required placeholder="Tu Nombre" style="flex: 1; border: none; background: transparent; padding: 0; outline: none; min-width: 0;" />
+                <span style="white-space: nowrap;">, acepto</span>
+              </div>
+            </div>
+
+            <button type="submit" class="form-btn" id="btnSubmit">📨 Enviar Solicitud</button>
+            <p style="text-align:center; font-size:12px; color:#777; margin-top:10px;">
+              La administración revisará su solicitud y le contactará.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    // Pega aquí la URL de tu Google Apps Script:
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxOtCh-OUfud0L3XPmrpwBLdZtcpk_YgawiY_fb8_zA42Q4Ga52tJjy9OuIcWxHgUjrnA/exec";
+
+    const form = document.getElementById('solicitudForm');
+    const loader = document.getElementById('loader');
+
+    function uid(){
+      return 'A8-' + Math.random().toString(36).substr(2, 6).toUpperCase();
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const nombreFirma = document.getElementById('firma').value.trim();
+      if(nombreFirma.length < 3) {
+        alert("Por favor firma el compromiso escribiendo tu nombre.");
+        return;
+      }
+
+      loader.style.display = 'flex';
+
+      const formData = new FormData(form);
+      const data = {};
+      formData.forEach((value, key) => data[key] = value);
+
+      // Construir la firma completa con el formato fijo
+      data.firma = 'Yo, ' + nombreFirma + ', acepto.';
+
+      data.id = uid();
+
+      fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' }
+      })
+      .then(() => {
+        loader.style.display = 'none';
+        alert("✅ ¡Solicitud enviada con éxito!\n\nCódigo de referencia: " + data.id + "\nLa administración se pondrá en contacto contigo.");
+        form.reset();
+        window.scrollTo(0,0);
+      })
+      .catch(error => {
+        loader.style.display = 'none';
+        console.error('Error:', error);
+        alert("Hubo un error al conectar. Por favor intenta de nuevo o contacta a un colaborador.");
+      });
+    });
+
+    // Manejar el estilo del contenedor de firma cuando el input tiene focus
+    const firmaInput = document.getElementById('firma');
+    const firmaContainer = document.getElementById('firma-container');
+    
+    firmaInput.addEventListener('focus', function() {
+      firmaContainer.style.borderColor = 'var(--blue)';
+      firmaContainer.style.background = '#fff';
+      firmaContainer.style.boxShadow = '0 0 0 3px rgba(80,112,160,.16)';
+    });
+    
+    firmaInput.addEventListener('blur', function() {
+      firmaContainer.style.borderColor = '#ccc';
+      firmaContainer.style.background = '#fafafa';
+      firmaContainer.style.boxShadow = 'none';
+    });
+  </script>
+</body>
+</html>
